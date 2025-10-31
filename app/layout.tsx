@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: {
@@ -16,8 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={"relative font-sans antialiased w-full"}>
+      <body className={"relative w-full font-sans antialiased"}>
         {children}
+        <Toaster />
       </body>
     </html>
   );

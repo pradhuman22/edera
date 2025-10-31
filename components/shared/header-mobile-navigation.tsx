@@ -9,16 +9,40 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { Button } from "../ui/button";
-import { Menu } from "lucide-react";
+import { LogOutIcon, Menu } from "lucide-react";
 import HeaderAuthButtons from "./header-auth-buttons";
 import HeaderMobileUserNavigation from "./header-mobile-user-navigation";
 import Link from "next/link";
 import { mainMenus, userMenus } from "@/constant";
 import { cn } from "@/lib/utils";
 import HeaderLogo from "./header-logo";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const HeaderMobileNavigation = () => {
-  const session = false;
+  const router = useRouter();
+  const { data } = authClient.useSession();
+  const session = data?.session;
+  const user = data?.user;
+  const handleLogout = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          toast.success("You’ve logged out. See you soon!", {
+            style: {
+              color: "green",
+            },
+          });
+          router.push("/login");
+          router.refresh();
+        },
+        onError: (ctx) => {
+          toast.error(ctx.error.message);
+        },
+      },
+    });
+  };
   return (
     <Sheet>
       <SheetTrigger asChild className="cursor-pointer lg:hidden">
@@ -59,9 +83,26 @@ const HeaderMobileNavigation = () => {
               </Link>
             </Button>
           ))}
+          <Button
+            variant={"ghost"}
+            className={cn("cursor-pointer justify-start text-lg", {
+              hidden: !session,
+            })}
+            onClick={handleLogout}
+          >
+            <LogOutIcon /> Logout
+          </Button>
         </div>
         <SheetFooter className="border-t pb-8">
-          {session ? <HeaderMobileUserNavigation /> : <HeaderAuthButtons />}
+          {session && user ? (
+            <HeaderMobileUserNavigation
+              name={user?.name}
+              email={user?.email}
+              image={user?.image || "/avatar.jpg"}
+            />
+          ) : (
+            <HeaderAuthButtons />
+          )}
         </SheetFooter>
       </SheetContent>
     </Sheet>
