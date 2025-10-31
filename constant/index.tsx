@@ -19,17 +19,13 @@ export const userMenus = [
   { label: "Profile Settings", url: "/dashboard/profile", icon: UserCog },
 ];
 
-export const heroStats = [
-  {
-    label: "Rooms",
-    value: "400",
-  },
-  {
-    label: "Cities",
-    value: "100",
-  },
-  {
-    label: "Users",
-    value: "5000",
-  },
+export const locations = [
+  { label: "Tokyo", value: "tokyo" },
+  { label: "Kyoto", value: "kyoto" },
+  { label: "Osaka", value: "osaka" },
+  { label: "Fukuoka", value: "fukuoka" },
+  { label: "Sapporo", value: "sapporo" },
+  { label: "Nagoya", value: "nagoya" },
+  { label: "Chiba", value: "chiba" },
+  { label: "Saitama", value: "saitama" },
 ];
