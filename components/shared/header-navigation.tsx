@@ -14,7 +14,7 @@ import { mainMenus } from "@/constant";
 const HeaderNavigation = () => {
   return (
     <NavigationMenu className="max-lg:hidden">
-      <NavigationMenuList className="gap-6">
+      <NavigationMenuList className="gap-8">
         {mainMenus.map((menu, idx) => (
           <NavigationMenuItem key={idx}>
             <NavigationMenuLink

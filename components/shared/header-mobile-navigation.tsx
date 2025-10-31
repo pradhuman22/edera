@@ -15,6 +15,7 @@ import HeaderMobileUserNavigation from "./header-mobile-user-navigation";
 import Link from "next/link";
 import { mainMenus, userMenus } from "@/constant";
 import { cn } from "@/lib/utils";
+import HeaderLogo from "./header-logo";
 
 const HeaderMobileNavigation = () => {
   const session = false;
@@ -25,11 +26,13 @@ const HeaderMobileNavigation = () => {
           <Menu />
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-2/3">
+      <SheetContent className="w-full pt-1">
         <SheetHeader>
-          <SheetTitle className="sr-only">Menu</SheetTitle>
+          <SheetTitle>
+            <HeaderLogo />
+          </SheetTitle>
         </SheetHeader>
-        <div className="mt-4 flex flex-col space-y-1.5 px-2">
+        <div className="flex flex-col space-y-2">
           {mainMenus.map((menu, idx) => (
             <Button
               key={idx}
@@ -57,7 +60,7 @@ const HeaderMobileNavigation = () => {
             </Button>
           ))}
         </div>
-        <SheetFooter className="border-t">
+        <SheetFooter className="border-t pb-8">
           {session ? <HeaderMobileUserNavigation /> : <HeaderAuthButtons />}
         </SheetFooter>
       </SheetContent>
