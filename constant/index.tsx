@@ -1,8 +1,11 @@
 import {
   BedSingleIcon,
+  BellDot,
   FileQuestionMarkIcon,
+  HouseIcon,
   HousePlugIcon,
   LayoutDashboard,
+  ReceiptJapaneseYenIcon,
   RssIcon,
   UserCog,
 } from "lucide-react";

@@ -3,8 +3,18 @@ import React, { useEffect, useState } from "react";
 import HeaderLogo from "./header-logo";
 import HeaderNavigation from "./header-navigation";
 import HeaderUserNavigation from "./header-user-navigation";
-import HeaderMobileNavigation from "./header-mobile-navigation";
 import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
+import { BellIcon } from "lucide-react";
+import { Button } from "../ui/button";
+import HeaderNotificationBell from "./header-notification-bell";
+
+const HeaderMobileNavigation = dynamic(
+  () => import("./header-mobile-navigation"),
+  {
+    ssr: false,
+  },
+);
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,6 +25,7 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <header
       className={cn("sticky top-0 z-50 w-full", {
@@ -28,6 +39,7 @@ const Header = () => {
           <HeaderNavigation />
         </div>
         <div className="flex items-center gap-3">
+          <HeaderNotificationBell />
           <HeaderUserNavigation />
           <HeaderMobileNavigation />
         </div>

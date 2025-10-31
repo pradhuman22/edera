@@ -2,6 +2,7 @@
 import React from "react";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
@@ -15,7 +16,6 @@ import HeaderMobileUserNavigation from "./header-mobile-user-navigation";
 import Link from "next/link";
 import { mainMenus, userMenus } from "@/constant";
 import { cn } from "@/lib/utils";
-import HeaderLogo from "./header-logo";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -50,38 +50,36 @@ const HeaderMobileNavigation = () => {
           <Menu />
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-full pt-1">
+      <SheetContent className="w-2/3 pt-2">
         <SheetHeader>
-          <SheetTitle>
-            <HeaderLogo />
-          </SheetTitle>
+          <SheetTitle className="sr-only">logo</SheetTitle>
         </SheetHeader>
         <div className="flex flex-col space-y-2">
           {mainMenus.map((menu, idx) => (
-            <Button
-              key={idx}
-              asChild
-              variant={"ghost"}
-              className="justify-start text-lg"
-            >
-              <Link href={menu.url}>
-                <menu.icon /> {menu.label}
-              </Link>
-            </Button>
+            <SheetClose asChild key={idx}>
+              <Button
+                asChild
+                variant={"ghost"}
+                className="justify-start text-lg"
+              >
+                <Link href={menu.url}>
+                  <menu.icon /> {menu.label}
+                </Link>
+              </Button>
+            </SheetClose>
           ))}
           {userMenus.map((menu, idx) => (
-            <Button
-              key={idx}
-              asChild
-              variant={"ghost"}
-              className={cn("justify-start text-lg", {
-                hidden: !session,
-              })}
-            >
-              <Link href={menu.url}>
-                <menu.icon /> {menu.label}
-              </Link>
-            </Button>
+            <SheetClose asChild key={idx}>
+              <Button
+                asChild
+                variant={"ghost"}
+                className="justify-start text-lg"
+              >
+                <Link href={menu.url}>
+                  <menu.icon /> {menu.label}
+                </Link>
+              </Button>
+            </SheetClose>
           ))}
           <Button
             variant={"ghost"}
