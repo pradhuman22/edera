@@ -2,7 +2,7 @@ import React from "react";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import ProfileForm from "@/components/dashboard/profile-form";
+import ProfileForm from "@/components/dashboard/profile/profile-form";
 
 const UserProfilePage = async () => {
   const headerList = await headers();

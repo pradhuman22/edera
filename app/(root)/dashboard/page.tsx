@@ -9,7 +9,7 @@ const DashboardPage = async () => {
   });
 
   return (
-    <div className="container mx-auto max-w-7xl px-4 py-5 lg:px-8">
+    <div className="container mx-auto max-w-7xl p-4 lg:px-8">
       <div className="mb-8">
         <h1 className="text-2xl font-medium">
           Welcome back, {data?.user.name}
@@ -18,7 +18,7 @@ const DashboardPage = async () => {
           Track, manage and forecast your room
         </p>
       </div>
-      <div className="grid gap-3 lg:grid-cols-3 lg:gap-10">
+      <div className="grid gap-3 lg:grid-cols-3 lg:gap-5">
         <StatisticCard
           title={"Rent Received"}
           value={"100000"}

@@ -4,7 +4,7 @@ import HeroSearchBox from "./hero-search-box";
 
 const HeroSection = () => {
   return (
-    <section className="py-4">
+    <section className="py-5 lg:py-16">
       <div className="container mx-auto max-w-7xl px-4 lg:px-8">
         <div className="relative grid grid-cols-1 items-center gap-6 md:grid-cols-2">
           <div>

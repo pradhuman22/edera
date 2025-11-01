@@ -90,6 +90,7 @@ export const auth = betterAuth({
       enabled: false,
     },
   },
+  trustedOrigins: ["192.168.11.8", "http://localhost:3001"],
 } satisfies BetterAuthOptions);
 
 export type Session = typeof auth.$Infer.Session;
