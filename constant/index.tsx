@@ -1,8 +1,10 @@
 import {
   BedSingleIcon,
+  FileQuestionMarkIcon,
   House,
   HousePlugIcon,
   LayoutDashboard,
+  MailQuestion,
   MessageCircleMore,
   UserCog,
 } from "lucide-react";
@@ -10,9 +12,8 @@ import {
 export const mainMenus = [
   { label: "Browse Rooms", url: "/rooms", icon: BedSingleIcon },
   { label: "List Room", url: "/dashboard/rooms/create", icon: HousePlugIcon },
-  // { label: "How It Works", url: "/how-it-works", icon: FileQuestionMarkIcon },
-  // { label: "Contact Us", url: "/contact", icon: MailQuestion },
-  // { label: "FAQ", url: "/contact", icon: MailQuestion },
+  { label: "FAQ", url: "/faq", icon: FileQuestionMarkIcon },
+  { label: "Contact Us", url: "/contact", icon: MailQuestion },
 ];
 
 export const userMenus = [
